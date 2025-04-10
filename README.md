@@ -6,6 +6,8 @@ This project is part of my **Data Scientist Nanodegree** and focuses on predicti
 
 The project leverages **PySpark** to handle large-scale data processing and machine learning, employing various algorithms to determine the best model for predicting customer churn. The best model is selected based on performance metrics, including **F1 score** and **accuracy**, with a special focus on improving predictions for churned users, who make up a smaller subset of the dataset.
 
+*Read the article on [Medium](https://medium.com/@gracorabello/predicting-user-churn-with-spark-my-capstone-project-for-the-data-science-nanodegree-66a58e2de474)
+
 ---
 
 ## Objective
@@ -59,27 +61,24 @@ Transforming and creating new features that might improve the performance of the
 ## Models Tested
 
 | Model                | F1 Score | Accuracy | Time     |
-|---------------------|----------|----------|----------|
-| Logistic Regression | 0.750    | 0.783    | ~2m 32s  |
-| Random Forest       | 0.647    | 0.739    | ~3m 37s  |
-| GBTClassifier       | **0.775**| **0.783**| ~1m 55s  |
-| Linear SVM          | 0.658    | 0.761    | ~3m 1s   |
-| Naive Bayes         | 0.505    | 0.478    | ~1m 26s  |
+|----------------------|----------|----------|----------|
+| Logistic Regression  | 0.674    | 0.722    | ~2m 54s  |
+| Random Forest        | 0.593    | 0.694    | ~3m 49s  |
+| GBTClassifier        | **0.697**| **0.708**| ~2m 9s   |
+| Linear SVM           | 0.569    | 0.694    | ~3m 8s   |
+| Naive Bayes          | 0.552    | 0.542    | ~1m 23s  |
+
+---
+
+## Evaluation Metric
+
+Given the imbalance in the churned class, **F1 Score** was chosen as the primary metric for model selection, supported by accuracy as a secondary metric.
 
 ---
 
 ## Best Model
 
 The **Gradient Boosted Tree Classifier (GBTClassifier)** was selected for model tuning, due to its strong performance on both F1 score and accuracy while maintaining reasonable training time.
-
----
-
-## Model Tunin
-
-
-## Evaluation Metric
-
-Given the imbalance in the churned class, **F1 Score** was chosen as the primary metric for model selection, supported by accuracy as a secondary metric.
 
 ---
 
@@ -93,13 +92,29 @@ Given the imbalance in the churned class, **F1 Score** was chosen as the primary
 
 ---
 
+## Future work
+
+### Hyperparameter Tuning
+While initial models were built using default parameters, further improvements can be achieved by tuning hyperparameters using Grid Search or Randomized Search over parameters such as:
+maxDepth, maxIter, stepSize, subsamplingRate.
+
+This tuning can be done using tools like CrossValidator from Spark MLlib for robust evaluation.
+
+### Use the Full Dataset on the Cloud
+To scale this solution for larger datasets: Migrate the pipeline to a cloud environment like Amazon EMR, Google Dataproc, or Databricks, which are optimized for distributed processing with Spark.
+
+### Feature Expansion
+Enrich the dataset with user demographics, listening context (e.g., device, location), or even sentiment analysis on user feedback to improve predictive performance.
+
+---
+
 ## Acknowledgments
 
 Udacity Data Scientist Nanodegree for the project inspiration.
 
 ---
 
-## 📬 Contact
+## Contact
 
 If you have any questions or suggestions, feel free to reach out! [Linkedin](https://www.linkedin.com/in/gracorabello/)
 
